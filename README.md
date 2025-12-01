@@ -48,14 +48,14 @@ Struktur dibuat modular untuk memudahkan pengembangann kedepannya:
 ```text
 Project Root/
 │
-├── main.py                  # [Core] Loop utama, integrasi modul, rendering akhir
-├── config.py                # [Config] Konstanta threshold, path aset
-├── asset_loader.py          # [IO] Loader PNG, scaling otomatis
-├── detection.py             # [Logic] Interpretasi landmark menjadi status logika
-├── gesture_detection.py     # [Algorithm] Deteksi gesture tangan berbasis aturan
-├── animation.py             # [Visual] Offset animasi sinus, transisi background
-├── geometry_utils.py        # [Math] Fungsi Euclidean Distance, Aspect Ratio
-├── image_utils.py           # [Processing] Resize & overlay PNG transparan
+├── main.py                  # Loop utama dan integrasi seluruh modul
+├── config.py                # Konfigurasi threshold dan path aset
+├── asset_loader.py          # Loader PNG dengan scaling otomatis
+├── detection.py             # Interpretasi landmark menjadi status logis
+├── gesture_detection.py     # Deteksi gesture tangan
+├── animation.py             # Animasi idle dan transisi background
+├── geometry_utils.py        # Fungsi matematika pendukung
+├── image_utils.py           # Manipulasi citra dan overlay PNG
 │
 └── assets/                  # Direktori aset visual (PNG/JPG)
 ```
@@ -84,3 +84,6 @@ Project Root/
    - Pastikan webcam aktif.
    - Gerakkan wajah dan tangan di depan kamera, avatar akan mengikuti secara real-time.
    - Untuk mengganti background, tekan tombol `C` pada keyboard saat aplikasi berjalan
+
+## Catatan
+- Penyesuaian threshold EAR/MAR diperlukan agar sistem tetap akurat pada berbagai kondisi wajah dan cahaya.
