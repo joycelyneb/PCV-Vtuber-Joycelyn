@@ -1,14 +1,13 @@
 import math
 
-# --- GEOMETRY UTILS ---
+# RUMUS DASAR
 def euclidean_distance(point1, point2):
-    """Hitung jarak Euclidean antara dua titik"""
     x1, y1 = point1.ravel()
     x2, y2 = point2.ravel()
     return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
+# ngukur MAR mouth aspect ratio
 def calculate_mar(landmarks):
-    """Hitung Mouth Aspect Ratio dari face landmarks"""
     top_lip = landmarks[13]
     bottom_lip = landmarks[14]
     left_corner = landmarks[61]
@@ -19,8 +18,8 @@ def calculate_mar(landmarks):
         return 0
     return vertical / horizontal
 
+# ngukur EAR eye aspect ratio
 def calculate_ear(landmarks, indices):
-    """Hitung Eye Aspect Ratio dari face landmarks"""
     v1 = euclidean_distance(landmarks[indices[1]], landmarks[indices[5]])
     v2 = euclidean_distance(landmarks[indices[2]], landmarks[indices[4]])
     hor = euclidean_distance(landmarks[indices[0]], landmarks[indices[3]])

@@ -2,9 +2,8 @@ import cv2
 import numpy as np
 import math
 
-# --- FUNGSI IMAGE PROCESSING ---
+# resize dengan aspect ratio tetap
 def resize_keep_aspect(image, target_dim, is_height=True):
-    """Resize gambar dengan mempertahankan aspect ratio"""
     if image is None: 
         return None
     (h, w) = image.shape[:2]
@@ -19,8 +18,8 @@ def resize_keep_aspect(image, target_dim, is_height=True):
     resized = cv2.resize(image, (new_w, new_h), interpolation=cv2.INTER_AREA)
     return resized
 
+# nempel PNG dengan alpha channel ke background
 def overlay_png(bg, fg, x_offset, y_offset):
-    """Overlay foreground PNG (with alpha) ke background"""
     if fg is None or bg is None: 
         return bg
     bg = bg.copy()

@@ -7,16 +7,11 @@ from config import (
 from geometry_utils import calculate_mar, calculate_ear
 from gesture_detection import detect_hand_sign
 
-# --- FACE DETECTION INDICES ---
+# peta titik landmark wajah untuk mata
 LEFT_EYE = [33, 160, 158, 133, 153, 144]
 RIGHT_EYE = [362, 385, 387, 263, 373, 380]
 
 def detect_face_expression(face_landmarks, frame_w, frame_h, assets):
-    """Deteksi ekspresi wajah (mulut, blink, head turn)
-    
-    Returns:
-        (head_key, status_text): key untuk asset head dan status text
-    """
     lm_points = np.array([(int(l.x * frame_w), int(l.y * frame_h)) for l in face_landmarks.landmark])
     mar = calculate_mar(lm_points)
     left_ear = calculate_ear(lm_points, LEFT_EYE)
@@ -50,11 +45,7 @@ def detect_face_expression(face_landmarks, frame_w, frame_h, assets):
     return "head_normal", "NORMAL"
 
 def detect_body_pose(pose_landmarks, left_hand_landmarks, right_hand_landmarks):
-    """Deteksi pose badan dan gesture tangan
-    
-    Returns:
-        pose_key: key untuk asset body
-    """
+
     lm = pose_landmarks.landmark
     left_wrist = lm[15]
     right_wrist = lm[16]
@@ -67,7 +58,7 @@ def detect_body_pose(pose_landmarks, left_hand_landmarks, right_hand_landmarks):
     left_gesture = detect_hand_sign(left_hand_landmarks)
     right_gesture = detect_hand_sign(right_hand_landmarks)
     
-    # --- DETEKSI GESTURE TANGAN ---
+    # deteksi gesture tangan
     if left_gesture == "peace" and right_gesture == "peace": 
         return "body_peace_both"
     elif left_gesture == "point" and right_gesture == "point": 
@@ -86,8 +77,6 @@ def detect_body_pose(pose_landmarks, left_hand_landmarks, right_hand_landmarks):
         return "body_thumb_right"
     elif right_gesture == "thumb": 
         return "body_thumb_left"
-    
-    # --- DETEKSI TANGAN NAIK ---
     elif is_left_up and is_right_up: 
         return "body_up_both"
     elif is_left_up: 

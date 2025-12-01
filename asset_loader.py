@@ -3,7 +3,7 @@ import numpy as np
 import os
 from image_utils import resize_keep_aspect
 
-# --- ASSET MAPPINGS ---
+# asset mapping
 FILE_MAP_HEAD = {
     "head_normal": "face_neutral.png",
     "head_happy": "face_happy.png",
@@ -33,14 +33,15 @@ FILE_MAP_BODY = {
     "body_thumb_both": "hand_thumbsup_both.png"
 }
 
+# ngambil asset
 def load_asset(filename, scale_size=None, is_height=True):
-    """Load PNG asset dari folder assets"""
     path = os.path.join("assets", filename)
     if not os.path.exists(path): 
         path = filename
     if not os.path.exists(path):
         return None
     
+    # baca gambar
     img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
     if img is None:
         return None
@@ -50,12 +51,12 @@ def load_asset(filename, scale_size=None, is_height=True):
     
     return img
 
+# LOAD SEMUA ASSET
 def load_all_assets(target_body_height, head_scale_factor):
-    """Load semua aset (kepala, badan, background)"""
     print("Memuat aset...")
     assets = {}
     
-    # --- LOAD BODY NORMAL TERLEBIH DAHULU ---
+    # load body normal
     path_body = os.path.join("assets", FILE_MAP_BODY["body_normal"])
     if not os.path.exists(path_body):
         path_body = FILE_MAP_BODY["body_normal"]
@@ -67,12 +68,13 @@ def load_all_assets(target_body_height, head_scale_factor):
             else:
                 print("CRITICAL ERROR: body_normal.png tidak ditemukan!")
                 return None, 0, 0, 0, 0
-
+            
+    # load ukuran refrensi body
     img_body_ref = cv2.imread(path_body, cv2.IMREAD_UNCHANGED)
     assets["body_normal"] = resize_keep_aspect(img_body_ref, target_body_height, is_height=True)
     ref_body_h, ref_body_w = assets["body_normal"].shape[:2]
 
-    # --- LOAD SISA BODY ---
+    #load sisa pose
     for key, filename in FILE_MAP_BODY.items():
         if key == "body_normal": 
             continue
@@ -85,7 +87,7 @@ def load_all_assets(target_body_height, head_scale_factor):
         else:
             assets[key] = assets["body_normal"]
 
-    # --- LOAD KEPALA ---
+    # load head assets
     ref_head_w, ref_head_h = 0, 0
     for key, filename in FILE_MAP_HEAD.items():
         path = os.path.join("assets", filename)
@@ -108,8 +110,8 @@ def load_all_assets(target_body_height, head_scale_factor):
 
     return assets, ref_body_h, ref_body_w, ref_head_h, ref_head_w
 
+    # load background
 def load_background_by_index(idx, w_target, h_target, background_files):
-    """Load background gambar dengan resize crop ke canvas size"""
     if not background_files: 
         return None
     
@@ -125,6 +127,7 @@ def load_background_by_index(idx, w_target, h_target, background_files):
     if bg_img is None: 
         return None
     
+    #crop bg sesuai canvas
     (h_orig, w_orig) = bg_img.shape[:2]
     ratio_bg = w_orig / h_orig
     ratio_canvas = w_target / h_target
