@@ -32,11 +32,11 @@ Sistem ini dirancang untuk keperluan interaktif seperti pertemuan virtual, pendi
 
 ## Teknologi yang Digunakan
 
-| Pustaka         | Versi Minimum | Fungsi Utama                                      |
-|-----------------|--------------|---------------------------------------------------|
-| **Python**      | 3.12         | Bahasa pemrograman utama                          |
+| Pustaka         | Versi Minimum | Fungsi Utama                                        |
+|-----------------|--------------|---------------------------------------------------   |
+| **Python**      | 3.12         | Bahasa pemrograman utama                             |
 | **OpenCV**      | 4.12.0       | Pengambilan frame kamera, manipulasi citra, blending |
-| **MediaPipe**   | 0.10.21      | Deteksi landmark wajah, tangan, dan pose tubuh      |
+| **MediaPipe**   | 0.10.21      | Deteksi landmark wajah, tangan, dan pose tubuh       |
 | **NumPy**       | 1.26.4       | Operasi array dan perhitungan jarak Euclidean        |
 
 ---
