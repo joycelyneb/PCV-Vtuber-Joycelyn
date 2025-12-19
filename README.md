@@ -2,10 +2,12 @@
 
 ## Deskripsi
 
-Sistem ini merupakan implementasi avatar 2D yang dapat bergerak secara real time mengikuti ekspresi wajah, gesture tangan, dan pose tubuh pengguna melalui input webcam. Melalui MediaPipe, sistem mampu membaca ekspresi mikro seperti kedipan dan gerakan mulut, serta gesture makro seperti pose tangan dan pergerakan tubuh secara keseluruhan. Selain itu, sistem juga menyediakan fitur penggantian latar belakang secara dinamis agar pengalaman interaksi menjadi lebih imersif.
+Proyek ini merupakan implementasi avatar 2D yang dapat bergerak secara real time mengikuti ekspresi wajah, gesture tangan, dan pose tubuh pengguna melalui input webcam. Melalui MediaPipe, sistem mampu membaca ekspresi mikro seperti kedipan dan gerakan mulut, serta gesture makro seperti pose tangan dan pergerakan tubuh secara keseluruhan. Selain itu, sistem juga menyediakan fitur penggantian latar belakang secara dinamis agar pengalaman interaksi menjadi lebih imersif.
 
-Sistem ini dirancang untuk keperluan interaktif seperti pertemuan virtual, pendidikan, maupun hiburan, dengan fokus utama pada responsivitas, stabilitas, dan kemudahan integrasi dengan aset visual avatar.
+Proyek ini dirancang untuk keperluan interaktif seperti pertemuan virtual, pendidikan, maupun hiburan, dengan fokus utama pada responsivitas, stabilitas, dan kemudahan integrasi dengan aset visual avatar.
 
+Link Youtube Demo:
+https://youtu.be/HtgBCZGrJHU
 ---
 
 ## Fitur Utama
